@@ -25,7 +25,8 @@ public class ChapterFragment extends Fragment {
         ChapterViewModel viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ChapterViewModel.class);
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(getActivity());
-        viewModel.setChapter(ConstantUtils.CHAPTER_URL);
+        Chapter chapter = (Chapter) getArguments().getSerializable("chapter");
+        viewModel.setChapter(chapter.getHref());
         return binding.getRoot();
     }
 }

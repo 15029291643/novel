@@ -1,8 +1,9 @@
 package com.example.novel.logic.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Catalog {
+public class Catalog implements Serializable {
     private String title;
     private List<Chapter> chapterList;
 

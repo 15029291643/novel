@@ -3,16 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/chapterFragment">
+    app:startDestination="@id/catalogFragment">
 
     <fragment
         android:id="@+id/catalogFragment"
         android:name="com.example.novel.ui.catalog.CatalogFragment"
         android:label="fragment_catalog"
-        tools:layout="@layout/fragment_catalog" />
+        tools:layout="@layout/fragment_catalog" >
+        <action
+            android:id="@+id/action_catalogFragment_to_chapterFragment"
+            app:destination="@id/chapterFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chapterFragment"
         android:name="com.example.novel.ui.chapter.ChapterFragment"
         android:label="fragment_chapter"
-        tools:layout="@layout/fragment_chapter" />
+        tools:layout="@layout/fragment_chapter" >
+        <argument
+            android:name="chapter"
+            app:argType="com.example.novel.logic.model.Chapter" />
+    </fragment>
 </navigation>

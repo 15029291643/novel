@@ -1,11 +1,15 @@
 package com.example.novel.ui.catalog;
 
+import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.novel.R;
@@ -34,10 +38,19 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         if (mChapterList == null) {
             return;
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController controller = Navigation.findNavController(v);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("chapter", mChapterList.get(position));
+                controller.navigate(R.id.action_catalogFragment_to_chapterFragment, bundle);
+            }
+        });
         holder.title.setText(mChapterList.get(position).getTitle());
     }
 
