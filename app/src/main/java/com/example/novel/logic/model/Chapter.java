@@ -1,8 +1,11 @@
 package com.example.novel.logic.model;
 
+import androidx.room.Entity;
+
 import java.io.Serializable;
 import java.util.List;
 
+@Entity
 public class Chapter implements Serializable {
     private String href;
     private String title;

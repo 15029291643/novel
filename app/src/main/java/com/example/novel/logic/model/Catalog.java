@@ -1,9 +1,13 @@
 package com.example.novel.logic.model;
 
+import androidx.room.Entity;
+
 import java.io.Serializable;
 import java.util.List;
 
+@Entity
 public class Catalog implements Serializable {
+
     private String title;
     private List<Chapter> chapterList;
 
