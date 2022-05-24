@@ -9,8 +9,10 @@
       <map>
         <entry key="..\:/program/Android/Java/novel3/app/src/main/res/layout/activity_main.xml" value="0.3578125" />
         <entry key="..\:/program/Android/Java/novel3/app/src/main/res/layout/fragment_catalog.xml" value="0.30833333333333335" />
-        <entry key="..\:/program/Android/Java/novel3/app/src/main/res/layout/fragment_chapter.xml" value="0.30833333333333335" />
+        <entry key="..\:/program/Android/Java/novel3/app/src/main/res/layout/fragment_chapter.xml" value="0.33" />
+        <entry key="..\:/program/Android/Java/novel3/app/src/main/res/layout/fragment_slide.xml" value="0.3411458333333333" />
         <entry key="..\:/program/Android/Java/novel3/app/src/main/res/layout/view_catalog.xml" value="0.30833333333333335" />
+        <entry key="..\:/program/Android/Java/novel3/app/src/main/res/layout/view_navigation.xml" value="0.3578125" />
       </map>
     </option>
   </component>

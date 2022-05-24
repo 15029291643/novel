@@ -27,14 +27,14 @@ public class CatalogFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentCatalogBinding binding = FragmentCatalogBinding.inflate(inflater, container, false);
         CatalogViewModel viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(CatalogViewModel.class);
-        CatalogAdapter adapter = new CatalogAdapter(null);
+        CatalogAdapter adapter = new CatalogAdapter();
         binding.catalogRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.catalogRecyclerView.setAdapter(adapter);
         viewModel.getCatalogList().observe(getActivity(), new Observer<Catalog>() {
             @Override
             public void onChanged(Catalog catalog) {
-               adapter.setCatalogList(catalog.getChapterList());
-                Log.e(TAG, "onChanged: " + catalog);
+               adapter.setCatalog(catalog);
+               binding.catalogTitle.setText(catalog.getTitle());
             }
         });
         viewModel.setCatalogList(ConstantUtils.CATALOG_URL);
