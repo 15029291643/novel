@@ -1,20 +1,18 @@
-package com.example.novel;
+package com.example.novel.ui.base;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
 public class BaseApplication extends Application {
-    @SuppressLint("StaticFieldLeak")
-    private static Context sContext;
+    public static Context mContext;
 
     public static Context getContext() {
-        return sContext;
+        return mContext;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        sContext = getApplicationContext();
+        mContext = getApplicationContext();
     }
 }

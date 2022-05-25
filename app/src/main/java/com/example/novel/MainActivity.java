@@ -1,21 +1,13 @@
 package com.example.novel;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.example.novel.databinding.ActivityMainBinding;
-import com.example.novel.logic.dao.ChapterDao;
-import com.example.novel.logic.dao.ChapterDatabase;
-import com.example.novel.logic.dao.RoomUtils;
-import com.example.novel.logic.model.Chapter;
+import com.example.novel.ui.base.BaseActivity;
 
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
 
     @Override
@@ -23,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        // RoomUtils.getChapterAll();
+        setSystemBarTransparent();
     }
 
     protected void setSystemBarTransparent() {

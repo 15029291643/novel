@@ -1,4 +1,4 @@
-package com.example.novel.logic.dao;
+package com.example.novel.logic.dao.database;
 
 import android.content.Context;
 
@@ -6,6 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.novel.logic.dao.dao.ChapterDao;
 import com.example.novel.logic.model.Chapter;
 
 @Database(entities = {Chapter.class}, version = 1, exportSchema = false)

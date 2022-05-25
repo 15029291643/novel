@@ -5,9 +5,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.novel.logic.model.Catalog;
 import com.example.novel.logic.network.callback.CatalogCallback;
-import com.example.novel.logic.network.util.OkhttpUtils;
-
-import java.util.List;
+import com.example.novel.logic.network.WarehouseUtils;
 
 public class CatalogViewModel extends ViewModel {
     private MutableLiveData<Catalog> mCatalogList = new MutableLiveData<>();
@@ -20,7 +18,7 @@ public class CatalogViewModel extends ViewModel {
     }
 
     public void setCatalogList(String url) {
-        OkhttpUtils.getCatalog(url, new CatalogCallback() {
+        WarehouseUtils.getCatalogByUrl(url, new CatalogCallback() {
             @Override
             public void onResponse(Catalog catalog) {
                 mCatalogList.postValue(catalog);

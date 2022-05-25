@@ -1,4 +1,4 @@
-package com.example.novel.logic.dao;
+package com.example.novel.logic.dao.dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;

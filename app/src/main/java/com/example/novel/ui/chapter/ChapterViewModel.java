@@ -9,12 +9,9 @@ import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.novel.logic.model.Catalog;
 import com.example.novel.logic.model.Chapter;
-import com.example.novel.logic.network.callback.CatalogCallback;
 import com.example.novel.logic.network.callback.ChapterCallback;
-import com.example.novel.logic.network.util.OkhttpUtils;
-import com.example.novel.logic.network.util.WarehouseUtils;
+import com.example.novel.logic.network.WarehouseUtils;
 
 import java.util.List;
 
@@ -52,21 +49,11 @@ public class ChapterViewModel extends ViewModel {
     });
 
     public void setPosition(int position) {
-        mPosition.setValue(position);/*
-        Log.e(TAG, "setPosition: " + "当前数据");
-        Log.e(TAG, "setPosition: " + mChapterList.get(position));*/
-        if (mChapterList.get(position).getContent() != null) {/*
-            Log.e(TAG, "setPosition: " + "集合返回");
-            Log.e(TAG, "setPosition: " + mChapter.getValue());*/
-            mChapter.setValue(mChapterList.get(position));
-            return;
-        }
+        mPosition.setValue(position);
         WarehouseUtils.getChapter(mChapterList.get(position).getHref(), new ChapterCallback() {
             @Override
             public void onResponse(Chapter chapter) {
-                Log.e(TAG, "onResponse: " + mChapterList.get(position).getContent());
-                mChapterList.get(position).setContent(chapter.getContent());
-                Log.e(TAG, "onResponse: " + mChapterList.get(position).getContent());
+                Log.e(TAG, "onResponse: " + chapter);
                 mChapter.postValue(chapter);
             }
         });

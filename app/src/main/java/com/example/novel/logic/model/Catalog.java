@@ -12,6 +12,16 @@ public class Catalog implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String title;
+    private String href;
+
+    public String getHref() {
+        return href;
+    }
+
+    public void setHref(String href) {
+        this.href = href;
+    }
+
     @TypeConverters(ChapterConverter.class)
     private List<Chapter> chapterList;
 
@@ -44,6 +54,7 @@ public class Catalog implements Serializable {
         return "Catalog{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", href='" + href + '\'' +
                 ", chapterList=" + chapterList +
                 '}';
     }

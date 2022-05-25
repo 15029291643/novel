@@ -53,6 +53,7 @@ public class OkhttpUtils {
             @Override
             public void onResponse(String html) {
                 Catalog catalog = JsoupUtils.toCatalog(html);
+                catalog.setHref(url);
                 callback.onResponse(catalog);
             }
         });
