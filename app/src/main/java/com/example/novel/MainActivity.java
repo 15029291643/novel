@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.example.novel.logic.model.Catalog;
+import com.example.novel.databinding.ActivityMainBinding;
+import com.example.novel.logic.dao.ChapterDao;
+import com.example.novel.logic.dao.ChapterDatabase;
+import com.example.novel.logic.dao.RoomUtils;
 import com.example.novel.logic.model.Chapter;
-import com.example.novel.logic.network.callback.CatalogCallback;
-import com.example.novel.logic.network.callback.ChapterCallback;
-import com.example.novel.logic.network.util.ConstantUtils;
-import com.example.novel.logic.network.util.OkhttpUtils;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -20,11 +21,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setSystemBarTransparent();
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        // RoomUtils.getChapterAll();
     }
 
-    protected void setSystemBarTransparent(){
+    protected void setSystemBarTransparent() {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }

@@ -1,15 +1,27 @@
 package com.example.novel.logic.model;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
 public class Catalog implements Serializable {
-
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String title;
+    @TypeConverters(ChapterConverter.class)
     private List<Chapter> chapterList;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -30,7 +42,8 @@ public class Catalog implements Serializable {
     @Override
     public String toString() {
         return "Catalog{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", chapterList=" + chapterList +
                 '}';
     }

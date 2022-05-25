@@ -14,6 +14,7 @@ import com.example.novel.logic.model.Chapter;
 import com.example.novel.logic.network.callback.CatalogCallback;
 import com.example.novel.logic.network.callback.ChapterCallback;
 import com.example.novel.logic.network.util.OkhttpUtils;
+import com.example.novel.logic.network.util.WarehouseUtils;
 
 import java.util.List;
 
@@ -51,16 +52,21 @@ public class ChapterViewModel extends ViewModel {
     });
 
     public void setPosition(int position) {
-        mPosition.setValue(position);
-        Log.e(TAG, "setPosition: " + mPosition.getValue());
-        if (mChapterList.get(position).getContent() != null) {
+        mPosition.setValue(position);/*
+        Log.e(TAG, "setPosition: " + "当前数据");
+        Log.e(TAG, "setPosition: " + mChapterList.get(position));*/
+        if (mChapterList.get(position).getContent() != null) {/*
+            Log.e(TAG, "setPosition: " + "集合返回");
+            Log.e(TAG, "setPosition: " + mChapter.getValue());*/
             mChapter.setValue(mChapterList.get(position));
             return;
         }
-        OkhttpUtils.getChapter(mChapterList.get(position).getHref(), new ChapterCallback() {
+        WarehouseUtils.getChapter(mChapterList.get(position).getHref(), new ChapterCallback() {
             @Override
             public void onResponse(Chapter chapter) {
-                mChapterList.set(position, chapter);
+                Log.e(TAG, "onResponse: " + mChapterList.get(position).getContent());
+                mChapterList.get(position).setContent(chapter.getContent());
+                Log.e(TAG, "onResponse: " + mChapterList.get(position).getContent());
                 mChapter.postValue(chapter);
             }
         });

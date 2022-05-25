@@ -1,5 +1,8 @@
 package com.example.novel.logic.network.util;
 
+import androidx.room.Room;
+
+import com.example.novel.logic.dao.RoomUtils;
 import com.example.novel.logic.model.Catalog;
 import com.example.novel.logic.model.Chapter;
 import com.example.novel.logic.network.callback.CatalogCallback;
@@ -39,6 +42,7 @@ public class OkhttpUtils {
             @Override
             public void onResponse(String html) {
                 Chapter chapter = JsoupUtils.toChapter(html);
+                chapter.setHref(url);
                 callback.onResponse(chapter);
             }
         });

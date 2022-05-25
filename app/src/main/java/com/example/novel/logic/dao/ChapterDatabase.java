@@ -1,31 +1,25 @@
 package com.example.novel.logic.dao;
 
-import androidx.annotation.NonNull;
+import android.content.Context;
+
 import androidx.room.Database;
-import androidx.room.DatabaseConfiguration;
-import androidx.room.InvalidationTracker;
+import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 import com.example.novel.logic.model.Chapter;
 
-@Database(entities = {Chapter.class}, version = 1)
-public class ChapterDatabase extends RoomDatabase {
+@Database(entities = {Chapter.class}, version = 1, exportSchema = false)
+public abstract class ChapterDatabase extends RoomDatabase {
+    public abstract ChapterDao getChapterDao();
 
-    @NonNull
-    @Override
-    protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration config) {
-        return null;
-    }
+    private static ChapterDatabase sDatabase;
 
-    @NonNull
-    @Override
-    protected InvalidationTracker createInvalidationTracker() {
-        return null;
-    }
-
-    @Override
-    public void clearAllTables() {
-
+    public static ChapterDatabase getInstance(Context content) {
+        if (sDatabase == null) {
+            sDatabase = Room.databaseBuilder(content, ChapterDatabase.class, "chapter")
+                    .allowMainThreadQueries()
+                    .build();
+        }
+        return sDatabase;
     }
 }
